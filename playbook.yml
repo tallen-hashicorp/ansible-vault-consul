@@ -18,6 +18,12 @@
         state: present
         update_cache: yes
     
+    - name: Install gpg
+      ansible.builtin.apt:
+        name: make
+        state: present
+        update_cache: yes
+    
     - name: Add signing key
       ansible.builtin.apt_key:
         url: https://apt.releases.hashicorp.com/gpg
