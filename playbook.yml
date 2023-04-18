@@ -23,6 +23,12 @@
         name: make
         state: present
         update_cache: yes
+
+    - name: Install golang
+      ansible.builtin.apt:
+        name: golang-go
+        state: present
+        update_cache: yes
     
     - name: Add signing key
       ansible.builtin.apt_key:
