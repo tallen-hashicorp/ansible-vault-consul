@@ -1,0 +1,41 @@
+---
+
+- name: Network Getting Started First Playbook
+  connection: ssh
+  gather_facts: true
+  become: yes
+  hosts: all
+  tasks:
+    - name: Install bashtop
+      ansible.builtin.apt:
+        name: bashtop
+        state: present
+        update_cache: yes
+
+    - name: Install gpg
+      ansible.builtin.apt:
+        name: gpg
+        state: present
+        update_cache: yes
+    
+    - name: Add signing key
+      ansible.builtin.apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
+        state: present
+    
+    - name: Add specified repository into sources list
+      ansible.builtin.apt_repository:
+        repo: deb https://apt.releases.hashicorp.com jammy main
+        state: present
+
+    - name: Install consul
+      ansible.builtin.apt:
+        name: consul
+        state: present
+        update_cache: yes
+
+    - name: Install vault
+      ansible.builtin.apt:
+        name: vault
+        state: present
+        update_cache: yes
