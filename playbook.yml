@@ -1,6 +1,6 @@
 ---
 
-- name: Network Getting Started First Playbook
+- name: Install Consul and Vault
   connection: ssh
   gather_facts: true
   become: yes
